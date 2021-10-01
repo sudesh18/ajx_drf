@@ -95,7 +95,5 @@ def getRegion(request):
         region = Wine.objects.filter(province = province).\
                 exclude(region__isnull=True).exclude(region__exact='').values_list('region').distinct()
         region = [i[0] for i in list(region)]
-        data = {
-            "region": region,
-        }
+        data = {"region": region}
         return JsonResponse(data, status = 200)
